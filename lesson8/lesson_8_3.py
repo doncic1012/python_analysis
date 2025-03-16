@@ -1,45 +1,45 @@
-#import pandas as pd
-
-#df = pd.read_csv('上市公司資料.csv')
-#df1 = df.dropna()
-#df2 = df1.reindex(columns=['公司代號','出表日期','公司名稱','產業別','營業收入-當月營收','營業收入-上月營收'])
-#df3 = df2.rename(columns={
-#    '營業收入-上月營收':'上月營收',
-#    '營業收入-當月營收':'當月營收'
-#    })
-#df3.to_csv('上市公司資料整理.csv',encoding='utf-8')
-#df3.to_excel('上市公司資料整理.xlsx')
-#print("存檔完成")
-
-#up right
-#import pandas as pd
-#
-#df = pd.read_csv('上市公司資料.csv')
-#    df1 = df.dropna()
-#    df2 = df1.reindex(columns=['公司代號','出表日期','公司名稱','產業別','營業收入-當月營收','營業收入-上月營收'])
-#    df3 = df2.rename(columns={
-#        '營業收入-上月營收':'上月營收',
-#        '營業收入-當月營收':'當月營收'
-#        })
-#    df3.to_csv('上市公司資料整理.csv',encoding='utf-8')
-#    df3.to_excel('上市公司資料整理.xlsx')
-#    print("存檔完成")
-
-#up wrong
-
 import pandas as pd
 
 def main():
+    """
+    主程式，用於讀取、處理並儲存上市公司資料。
+
+    該函數執行以下步驟：
+    1. 從 CSV 檔案讀取上市公司資料。
+    2. 移除包含缺失值 (NaN) 的行。
+    3. 重新索引 DataFrame，僅保留指定的欄位。
+    4. 重新命名欄位名稱，使其更具可讀性。
+    5. 將處理後的資料儲存為 CSV 和 Excel 檔案。
+    6. 印出 "存檔完成" 表示操作已成功完成。
+    """
+    # 使用 pandas 讀取名為 '上市公司資料.csv' 的 CSV 檔案。
     df = pd.read_csv('上市公司資料.csv')
+    
+    # 移除 DataFrame 'df' 中含有缺失值 (NaN) 的所有行，並將結果儲存在 'df1' 中。
     df1 = df.dropna()
+    
+    # 重新索引 DataFrame 'df1'，只保留指定的欄位，並將結果儲存在 'df2' 中。
+    # 保留的欄位包括：'公司代號'、'出表日期'、'公司名稱'、'產業別'、'營業收入-當月營收' 和 '營業收入-上月營收'。
     df2 = df1.reindex(columns=['公司代號','出表日期','公司名稱','產業別','營業收入-當月營收','營業收入-上月營收'])
+    
+    # 重新命名 DataFrame 'df2' 中的欄位名稱，並將結果儲存在 'df3' 中。
+    # '營業收入-上月營收' 欄位被重新命名為 '上月營收'。
+    # '營業收入-當月營收' 欄位被重新命名為 '當月營收'。
     df3 = df2.rename(columns={
         '營業收入-上月營收':'上月營收',
         '營業收入-當月營收':'當月營收'
         })
+    
+    # 將 DataFrame 'df3' 儲存為名為 '上市公司資料整理.csv' 的 CSV 檔案，並使用 UTF-8 編碼。
     df3.to_csv('上市公司資料整理.csv',encoding='utf-8')
+    
+    # 將 DataFrame 'df3' 儲存為名為 '上市公司資料整理.xlsx' 的 Excel 檔案。
     df3.to_excel('上市公司資料整理.xlsx')
+    
+    # 印出 "存檔完成" 字樣，表示資料已成功儲存。
     print("存檔完成")
 
+# 檢查是否為主程式執行。
 if __name__ == '__main__':
+    # 如果是主程式執行，則呼叫 main() 函數。
     main()
